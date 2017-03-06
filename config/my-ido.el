@@ -7,18 +7,19 @@
                     recentf
                     smex))
 
-(setq flx-ido-threshold 10000)
+(custom-set-variables
+ '(flx-ido-threshold 10000)
 
-(setq ido-ignore-buffers '("\\` " "\\`*"))
-(setq ido-max-window-height 10)
-(setq ido-enable-flex-matching t)
-(setq ido-use-faces t)
-(setq ido-save-directory-list-file (concat my-emacs-etc-dir "ido-last"))
+ '(ido-ignore-buffers (quote ("\\` " "\\`*")))
+ '(ido-max-window-height 10)
+ '(ido-enable-flex-matching t)
+ '(ido-use-faces t)
+ `(ido-save-directory-list-file ,(concat my-emacs-etc-dir "ido-last"))
 
-(setq recentf-save-file (concat my-emacs-etc-dir "recent-files")
-      recentf-max-saved-items 200)
+ `(recentf-save-file ,(concat my-emacs-etc-dir "recent-files"))
+ '(recentf-max-saved-items 200)
 
-(setq smex-save-file (concat my-emacs-etc-dir "smex-items"))
+ `(smex-save-file ,(concat my-emacs-etc-dir "smex-items")))
 
 (set-default 'imenu-auto-rescan t)
 

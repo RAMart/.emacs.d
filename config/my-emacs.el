@@ -6,30 +6,31 @@
 (setq my-emacs-etc-dir
       (file-name-as-directory (concat user-emacs-directory "etc")))
 
-(setq nsm-settings-file (concat my-emacs-etc-dir "network-security.data"))
+(custom-set-variables `(nsm-settings-file ,(concat my-emacs-etc-dir "network-security.data")))
 
-(setq inhibit-startup-screen t
-      inhibit-startup-message t
-      inhibit-startup-echo-area-message t
-      ring-bell-function 'ignore
-      uniquify-buffer-name-style 'forward
-      uniquify-separator "/"
-      uniquify-after-kill-buffer-p t
-      uniquify-ignore-buffers-re "^\\*"
-      backup-inhibited t
-      delete-by-moving-to-trash nil
-      compilation-ask-about-save nil
-      confirm-nonexistent-file-or-buffer nil
-      truncate-partial-width-windows nil
-      echo-keystrokes 0.02
-      require-final-newline t
-      transient-mark-mode t
-      shift-select-mode nil
-      x-select-enable-clipboard t
-      query-replace-highlight t
-      next-error-highlight t
-      next-error-highlight-no-select t
-      initial-major-mode 'lisp-interaction-mode)
+(custom-set-variables
+ '(inhibit-startup-screen t)
+ '(inhibit-startup-message t)
+ '(inhibit-startup-echo-area-message t)
+ '(ring-bell-function (quote ignore))
+ '(uniquify-buffer-name-style (quote forward))
+ '(uniquify-separator "/")
+ '(uniquify-after-kill-buffer-p t)
+ '(uniquify-ignore-buffers-re "^\\*")
+ '(backup-inhibited t)
+ '(delete-by-moving-to-trash nil)
+ '(compilation-ask-about-save nil)
+ '(confirm-nonexistent-file-or-buffer nil)
+ '(truncate-partial-width-windows nil)
+ '(echo-keystrokes 0.02)
+ '(require-final-newline t)
+ '(transient-mark-mode t)
+ '(shift-select-mode nil)
+ '(x-select-enable-clipboard t)
+ '(query-replace-highlight t)
+ '(next-error-highlight t)
+ '(next-error-highlight-no-select t)
+ '(initial-major-mode (quote lisp-interaction-mode)))
 
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))

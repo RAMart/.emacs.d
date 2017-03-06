@@ -12,12 +12,13 @@
 
 (add-to-list 'exec-path "~/bin")
 
-(setq cider-repl-result-prefix ";=> ")
-(setq cider-repl-use-clojure-font-lock t)
-(setq cider-ovelays-use-font-lock t)
-(setq cider-mode-line-show-connection nil)
-(setq cider-repl-use-pretty-printing t)
-(setq cider-prompt-for-project-on-connect t)
+(custom-set-variables
+ '(cider-repl-result-prefix ";=> ")
+ '(cider-repl-use-clojure-font-lock t)
+ '(cider-ovelays-use-font-lock t)
+ '(cider-mode-line-show-connection nil)
+ '(cider-repl-use-pretty-printing t)
+ '(cider-prompt-for-project-on-connect t))
 
 ;;(setq cider-show-error-buffer nil)
 ;;(setq cider-auto-select-error-buffer nil)

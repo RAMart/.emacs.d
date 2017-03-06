@@ -10,7 +10,7 @@
     ("38e64ea9b3a5e512ae9547063ee491c20bd717fe59d9c12219a0b1050b439cdd" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(package-selected-packages
    (quote
-    (cider-eval-sexp-fu cider projectile paredit rainbow-delimiters avy))))
+    (cider paredit rainbow-delimiters avy))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

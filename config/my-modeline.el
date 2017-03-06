@@ -1,10 +1,12 @@
 (provide 'my-modeline)
 (require-package 'smart-mode-line)
 
-(setq sml/mode-width 'full)
-(setq sml/theme 'dark)
+(custom-set-variables
+ '(sml/mode-width (quote full))
+ '(sml/theme (quote dark)))
+
 (sml/setup)
 
 (custom-set-faces
- '(mode-line ((t :background "MidnightBlue" :box nil)))
- '(mode-line-inactive ((t :background "grey20" :italic t :box nil))))
+ '(mode-line ((t :background "DarkSlateBlue" :box nil)))
+ '(mode-line-inactive ((t :background "black" :italic t :box nil))))

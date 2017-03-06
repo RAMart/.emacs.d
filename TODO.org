@@ -1,0 +1,3 @@
+- .projectile
+- auto-save-list
+- markdown-mode: Whitespaces sichtbar machen und *nicht* bereinigen.

@@ -1,5 +1,6 @@
 (provide 'my-clojure)
 (require-packages '(cider
+                    clj-refactor
                     clojure-mode
                     ;;cider-eval-sexp-fu
                     ;;clojure-cheatsheet
@@ -40,3 +41,14 @@
 ;;(setq nrepl-eval-sexp-fu-flash-duration 0.2)
 ;;(setq cider-eval-sexp-fu-flash-duration 0.2)
 ;;(setq cider-cljs-lein-repl "(user/cljs-repl)")
+
+
+(dolist (mode '(clojure-mode clojurescript-mode))
+  (dolist (composition '(("λ" "(\\(fn\\)[\[[:space:]]")
+                         ("ƒ" "\\(#\\)(" )
+                         ("∈" "\\(#\\){")))
+    (font-lock-add-keywords mode `((,(nth 1 composition)
+                                    (0 (progn (compose-region (match-beginning 1)
+                                                              (match-end 1)
+                                                              ,(car composition))
+                                              nil)))))))

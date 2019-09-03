@@ -4,12 +4,9 @@
 (require 'my-osx)
 (require 'my-keymap) ;; TODO: Nochmal die einzelnen Modes durchgehen und ggf. was umheben.
                      ;;       Kürzel für
-                     ;;       - browse-kill-ring
-                     ;;       - magit
                      ;;       - cider-repl-clear-buffer
                      ;;       - delete-char (falls die Klammern mal falsch sind)
                      ;;       - ganze SExp löschen (paxedit, gelle? Oder msartparens?)
-                     ;;       - Bildschirm hoch-/runterscrollen, Cursor aber stehen lassen, wäre noch super.
                      ;;       C-: ist im Clojure(script)-mode bereits an clojure-toggle-keyword-string gebunden
                      ;;
 (require 'my-diminish)
@@ -22,9 +19,9 @@
 (require 'my-multiple-cursors)
 (require 'my-ivy)
 
+;; TODO: Faces pro Theme setzen, nicht global:
+;; https://emacs.stackexchange.com/questions/19286/how-to-change-face-in-particular-theme-locally/19287
 
-;; TODO: Nur ein Test
-;; (require-package 'vlf)
 
 ;; TODO: Search And Replace Facility
 ;;   counsel-git-grep (benötig – natürlich – git)
@@ -38,6 +35,7 @@
 (require 'my-structural-editing)
 
 (require 'my-org)
+(require 'my-markdown)
 (require 'my-save-places)
 (require 'my-ediff) ;; TODO: Diffs und Merges üben. Sind die Farben i.O.?
 (require 'my-avy) ;; TODO: Die Shortcuts finde ich nicht so eingänglich.
@@ -47,7 +45,7 @@
 (require 'my-move-text) ;; TODO: Kooperiert nicht gut mit paredit/paxedit. Fott? Andere, Mode-spezifische Keybindings?
 (require 'my-clojure) ;; TODO: STOPPED RIGHT HERE AND NOT DONE YET!
 
-(require 'my-magit)
+(require 'my-magit) ;; TODO: magit-log-buffer-file noch an ein Shortcut binden?
 
 ;; TODO: Inspirationsquellen:
 ;; https://github.com/hemmvm/dotemacs/blob/master/init.el
@@ -59,8 +57,8 @@
 ;;   https://www.emacswiki.org/emacs/HideShow
 ;; highlight-symbol -> Automatische Hervorhebung, farbliche Hervorhebung
 ;; smartrep -> In einen Kontext gehen und dort Befehle wiederholen, bis C-g
-;; - flycheck -> Lint as you type
-;; - markdown-mode
+;; - flycheck -> Lint as you type, zusammen mit clj-kondo vielleicht?
+
 
 
 

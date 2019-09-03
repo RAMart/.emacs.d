@@ -31,8 +31,9 @@
        ingos-buffer-keymap))
     map))
 
-(global-set-key (kbd "C-<return>") 'find-file-at-point)
 (global-set-key (kbd "s-!") '(lambda ()  (interactive) (ansi-term "/bin/zsh")))
+(global-set-key (kbd "C-<return>") 'find-file-at-point)
+(global-set-key (kbd "C-s-s") 'counsel-git-grep) ;; Should work in Emacs 27
 
 (global-set-key (kbd "C-ä")
                 (transient-keymap-with-message-setter

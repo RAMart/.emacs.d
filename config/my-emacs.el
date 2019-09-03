@@ -2,7 +2,8 @@
 (require 'uniquify)
 (require-packages '(smooth-scrolling
                     browse-kill-ring
-                    cyberpunk-theme))
+                    cyberpunk-theme
+                    eterm-256color))
 
 (setq my-emacs-etc-dir
       (file-name-as-directory (concat user-emacs-directory "etc")))
@@ -50,7 +51,11 @@
 
 (global-hl-line-mode t)
 (add-hook 'eshell-mode-hook (lambda () (setq-local global-hl-line-mode  nil)))
-(add-hook 'term-mode-hook (lambda () (setq-local global-hl-line-mode nil)))
+;; TODO: Auslagern nach my-term? (Zusammen mit unten definiertem face...)
+(add-hook 'term-mode-hook (lambda ()
+                            (setq-local global-hl-line-mode nil)
+                            (eterm-256color-mode)
+                            (buffer-face-set 'eterm-256color-default)))
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -70,16 +75,8 @@
 (custom-set-faces
  '(hl-line ((t (:background "#3E4446"))))
  '(font-lock-comment-face ((t (:foreground "grey55"))))
- '(vertical-border ((t (:foreground "grey30"))))
- '(fringe ((t (:background "#2E3436"))))
- '(term ((t (:inherit default :foreground "gray70"))))
- '(term-color-black ((t (:inherit default :background "#2E3436" :foreground "black"))))
- '(term-color-blue ((t (:inherit default :background "DodgerBlue3" :foreground "DodgerBlue3"))))
- '(term-color-cyan ((t (:inherit default :background "turquoise3" :foreground "turquoise3"))))
- '(term-color-green ((t (:inherit default :background "SeaGreen" :foreground "SeaGreen"))))
- '(term-color-magenta ((t (:inherit default :background "DarkOrchid3" :foreground "DarkOrchid3"))))
-  '(term-color-red ((t (:inherit default :background "OrangeRed2" :foreground "OrangeRed2"))))
- '(term-color-white ((t (:inherit default :background "gray70" :foreground "gray70"))))
- '(term-color-yellow ((t (:inherit default :background "gold2" :foreground "gold2")))))
+ '(eterm-256color-default ((t (:family "Source Code Pro for Powerline"))))
+ '(vertical-border ((t (:foreground "grey40"))))
+ '(fringe ((t (:background "#2E3436")))))
 
 (toggle-frame-fullscreen)

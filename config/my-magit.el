@@ -8,3 +8,10 @@
 
 (custom-set-variables
  '(magit-completing-read-function 'ivy-completing-read))
+
+(custom-set-faces
+ '(magit-hash ((t (:foreground "grey50"))))
+ '(magit-diff-added ((t (:background "#228822" :foreground "#FFFFFF"))))
+ '(magit-diff-added-highlight ((t (:background "#228822" :foreground "#FFFFFF"))))
+ '(magit-diff-removed ((t (:background "#902222" :foreground "#FFFFFF"))))
+ '(magit-diff-removed-highlight ((t (:background "#902222" :foreground "#FFFFFF")))))

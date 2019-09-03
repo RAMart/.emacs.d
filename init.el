@@ -16,6 +16,7 @@
  '(company-idle-delay 0.2)
  '(company-minimum-prefix-length 1)
  '(company-quickhelp-delay nil)
+ '(company-quickhelp-mode 1)
  '(compilation-ask-about-save nil)
  '(confirm-nonexistent-file-or-buffer nil)
  '(custom-safe-themes
@@ -31,6 +32,7 @@
  '(ivy-height 13)
  '(ivy-use-virtual-buffers t)
  '(magit-completing-read-function (quote ivy-completing-read))
+ '(markdown-command "/usr/local/bin/multimarkdown")
  '(neo-smart-open t)
  '(next-error-highlight t)
  '(next-error-highlight-no-select t)
@@ -39,7 +41,7 @@
  '(org-ellipsis " ►")
  '(package-selected-packages
    (quote
-    (vlf move-text expand-region ace-window counsel swiper ivy smex clj-refactor undo-tree neotree company-quickhelp multiple-cursors which-key company magit fullframe cider paredit rainbow-delimiters avy)))
+    (solarized-theme exwm markdown-mode move-text expand-region ace-window counsel swiper ivy smex clj-refactor undo-tree neotree company-quickhelp multiple-cursors which-key company magit fullframe cider paredit rainbow-delimiters avy)))
  '(query-replace-highlight t)
  '(recentf-max-saved-items 200)
  '(recentf-save-file "~/.emacs.d/etc/recent-files")
@@ -69,7 +71,8 @@
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(uniquify-ignore-buffers-re "^\\*")
  '(uniquify-separator "/")
- '(which-key-idle-delay 0.1))
+ '(which-key-idle-delay 0.1)
+ '(winner-mode 1))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -77,11 +80,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "orange"))))
+ '(eterm-256color-default ((t (:family "Source Code Pro for Powerline"))))
  '(font-lock-comment-face ((t (:foreground "grey55"))))
  '(fringe ((t (:background "#2E3436"))))
  '(hl-line ((t (:background "#3E4446"))))
  '(ivy-subdir ((t (:foreground "grey60"))))
  '(ivy-virtual ((t (:foreground "grey60"))))
+ '(magit-hash ((t (:foreground "grey50"))))
  '(mode-line ((t :background "MidnightBlue" :box nil)))
  '(mode-line-inactive ((t :background "grey20" :italic t :box nil)))
  '(neo-dir-link-face ((t (:height 100))))
@@ -109,7 +114,6 @@
  '(rainbow-delimiters-depth-7-face ((t (:foreground "spring green"))))
  '(rainbow-delimiters-depth-8-face ((t (:foreground "sienna1"))))
  '(rainbow-delimiters-unmatched-face ((t (:background "red" :foreground "white"))))
- '(term ((t (:inherit default :foreground "gray70"))))
  '(undo-tree-visualizer-active-branch-face ((t (:foreground "green3" :background "#2E3436"))))
  '(undo-tree-visualizer-current-face ((t (:foreground "Black" :background "Green"))))
  '(undo-tree-visualizer-default-face ((t (:foreground "grey55" :background "#2E3436"))))
@@ -128,8 +132,10 @@
   (mapc 'require-package pkgs))
 
 (dolist (source '(("melpa" . "http://melpa.milkbox.net/packages/")
-                  ("marmalade" . "http://marmalade-repo.org/packages/")))
+                  ("marmalade" . "http://marmalade-repo.org/packages/")
+                  ("gnu" . "http://elpa.gnu.org/packages/")))
   (add-to-list 'package-archives source t))
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3") ;; WORKAROUND bis Emacs 26.3+ erschienen ist
 
 (package-initialize)
 

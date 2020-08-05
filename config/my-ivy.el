@@ -16,14 +16,6 @@
  '(ivy-height 13)
  '(ivy-use-virtual-buffers t))
 
-(custom-set-faces
- '(ivy-subdir ((t (:foreground "grey60"))))
- '(ivy-virtual ((t (:foreground "grey60")))))
-
-(ivy-add-actions
- 'counsel-find-file
- '(("b" neotree-dir "browse")))
-
 (smex-initialize)
 (recentf-mode t)
 (ivy-mode 1)

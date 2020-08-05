@@ -14,12 +14,16 @@
 (add-to-list 'exec-path "~/bin")
 
 (custom-set-variables
+ '(cider-use-overlays nil)
  '(cider-repl-result-prefix ";=> ")
  '(cider-repl-use-clojure-font-lock t)
  '(cider-ovelays-use-font-lock t)
  '(cider-mode-line-show-connection nil)
  '(cider-repl-use-pretty-printing t)
  '(cider-prompt-for-project-on-connect t))
+
+;;(setq cider-result-overlay-position nil)
+;;(setq cider-use-overlays nil)
 
 ;;(setq cider-show-error-buffer nil)
 ;;(setq cider-auto-select-error-buffer nil)

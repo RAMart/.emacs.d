@@ -1,17 +1,12 @@
 (provide 'my-keymap)
 (require-packages '(buffer-move cl))
 
-(defun transient-keymap-with-message-setter (msg keymap)
-  (let ((keymap-message (gensym))
-        (keymap-binding (gensym)))
-    (set keymap-message msg)
-    (set keymap-binding keymap)
-    `(lambda ()
-       (interactive)
-       (message ,keymap-message)
-       (set-transient-map ,keymap-binding t))))
+(defun ingos-keymap-cleanup ()
+  ;;(setq which-key-show-transient-maps nil)
+  )
 
-(defvar ingos-buffer-keymap
+(defun ingos-buffer-keymap ()
+  (interactive)
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "<up>") 'buf-move-up)
     (define-key map (kbd "<down>") 'buf-move-down)
@@ -21,21 +16,21 @@
     (define-key map (kbd "+") 'enlarge-window-horizontally)
     (define-key map (kbd "_") 'shrink-window)
     (define-key map (kbd "*") 'enlarge-window)
-    map))
+    ;;(setq which-key-show-transient-maps t)
+    (set-transient-map map t 'ingos-keymap-cleanup)))
 
-(defvar ingos-keymap
+(defun ingos-keymap ()
+  (interactive)
   (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "b")
-      (transient-keymap-with-message-setter
-       "Buffer mode: [SHIFT] +/- resize, CURSOR change layout"
-       ingos-buffer-keymap))
-    map))
+    (define-key map (kbd "b") 'ingos-buffer-keymap)
+    ;;(setq which-key-show-transient-maps t)
+    (set-transient-map map nil 'ingos-keymap-cleanup)))
 
 (global-set-key (kbd "s-!") '(lambda ()  (interactive) (ansi-term "/bin/zsh")))
+(global-set-key (kbd "C-M-y") 'browse)
 (global-set-key (kbd "C-<return>") 'find-file-at-point)
-(global-set-key (kbd "C-s-s") 'counsel-git-grep) ;; Should work in Emacs 27
+(global-set-key (kbd "C-s") 'swiper)
+(global-set-key (kbd "C-M-s") 'counsel-git-grep)
+;; (global-set-key (kbd "C-S-s") 'counsel-git-grep) ;; Should work in Emacs 27
 
-(global-set-key (kbd "C-ä")
-                (transient-keymap-with-message-setter
-                 "[B]uffer"
-                 ingos-keymap))
+(global-set-key (kbd "C-ä") 'ingos-keymap)

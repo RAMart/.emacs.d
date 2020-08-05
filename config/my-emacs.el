@@ -2,7 +2,6 @@
 (require 'uniquify)
 (require-packages '(smooth-scrolling
                     browse-kill-ring
-                    cyberpunk-theme
                     eterm-256color))
 
 (setq my-emacs-etc-dir
@@ -16,6 +15,7 @@
  '(inhibit-startup-echo-area-message t)
  '(ring-bell-function (quote ignore))
  '(blink-cursor-blinks 0)
+ '(show-paren-delay 0)
  '(uniquify-buffer-name-style (quote forward))
  '(uniquify-separator "/")
  '(uniquify-ignore-buffers-re "^\\*")
@@ -42,9 +42,9 @@
 (setq-default left-fringe-width 6)
 (setq-default right-fringe-width 6)
 
+(show-paren-mode 1)
 (column-number-mode 1)
 (set-default 'indent-tabs-mode nil)
-(show-paren-mode 1)
 (delete-selection-mode)
 (auto-compression-mode t)
 (smooth-scrolling-mode t)
@@ -70,13 +70,24 @@
 ;;disable CJK coding/encoding (Chinese/Japanese/Korean characters)
 (setq utf-translate-cjk-mode nil)
 
-;; final touch
-(load-theme 'tango-dark)
-(custom-set-faces
- '(hl-line ((t (:background "#3E4446"))))
- '(font-lock-comment-face ((t (:foreground "grey55"))))
- '(eterm-256color-default ((t (:family "Source Code Pro for Powerline"))))
- '(vertical-border ((t (:foreground "grey40"))))
- '(fringe ((t (:background "#2E3436")))))
+(add-hook
+ 'prog-mode-hook
+ (lambda ()
+   (font-lock-add-keywords
+    nil
+    '(("\\<\\(HACK\\|NOTE\\|FIXME\\|TODO\\|BUG\\|INFO\\|WATCHOUT\\)"
+       1 font-lock-warning-face t)))))
 
-(toggle-frame-fullscreen)
+;; final touch
+(load-theme 'zenburn t)
+
+(custom-theme-set-faces
+ 'zenburn
+ '(cursor ((t (:background "orange"))))
+ '(eterm-256color-default ((t (:family "Noto Mono for Powerline"))))
+ '(vertical-border ((t (:foreground "grey50"))))
+ '(font-lock-warning-face ((t (:foreground "#DFAF8F" :weight bold)))) ;; zenburn-orange
+)
+
+(toggle-frame-maximized)
+;; (toggle-frame-fullscreen)

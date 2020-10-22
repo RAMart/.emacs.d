@@ -70,24 +70,14 @@
 ;;disable CJK coding/encoding (Chinese/Japanese/Korean characters)
 (setq utf-translate-cjk-mode nil)
 
+;; TODO: ggf. auch nett: https://www.reddit.com/r/emacs/comments/jc4uou/tags_everywhere/
 (add-hook
  'prog-mode-hook
  (lambda ()
    (font-lock-add-keywords
     nil
     '(("\\<\\(HACK\\|NOTE\\|FIXME\\|TODO\\|BUG\\|INFO\\|WATCHOUT\\)"
-       1 font-lock-warning-face t)))))
-
-;; final touch
-(load-theme 'zenburn t)
-
-(custom-theme-set-faces
- 'zenburn
- '(cursor ((t (:background "orange"))))
- '(eterm-256color-default ((t (:family "Noto Mono for Powerline"))))
- '(vertical-border ((t (:foreground "grey50"))))
- '(font-lock-warning-face ((t (:foreground "#DFAF8F" :weight bold)))) ;; zenburn-orange
-)
+       1 font-lock-waning-face t)))))
 
 (toggle-frame-maximized)
 ;; (toggle-frame-fullscreen)

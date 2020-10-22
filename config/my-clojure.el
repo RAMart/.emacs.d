@@ -56,3 +56,91 @@
                                                               (match-end 1)
                                                               ,(car composition))
                                               nil)))))))
+
+(defun get-file-content (filePath)
+  "Return filePath's file content."
+  (with-temp-buffer
+    (insert-file-contents filePath)
+    (buffer-string)))
+
+(defun lein-project-clj-filepath ()
+    (thread-first
+        (projectile-project-root)
+      (concat "project.clj")))
+
+(defun lein-project-clj-content (filepath)
+  (let* ((data
+          (thread-first
+              filepath
+            (get-file-content)
+            (parseedn-read-str)))
+
+         (name
+          (nth 1 data))
+
+         (version
+          (nth 2 data))
+
+         (rest-root-level-values
+          (seq-drop data 3))
+
+         (result
+          (make-hash-table :test 'equal)))
+
+    (puthash :name name result)
+    (puthash :version version result)
+
+    (mapc (lambda (pair) (puthash (car pair) (car (cdr pair)) result))
+          (seq-partition rest-root-level-values 2))
+
+    result))
+
+(defun lein-project-clj-profiles (filepath)
+    (thread-last filepath
+      (lein-project-clj-content)
+      (gethash :profiles)
+      (hash-table-keys)
+      (mapcar 'symbol-name)
+      (mapcar (lambda (profile) (substring profile 1)))))
+
+(defun cider-jack-in-with-args (args)
+  (interactive "sjack-in repl with args: ")
+  (let ((cider-lein-parameters
+         args))
+    (cider-jack-in nil)))
+
+(defun cider-jack-in-with-profile (profile)
+  (interactive "sjack-in repl with profile: ")
+  (cider-jack-in-with-args (concat "with-profile " profile " repl")))
+
+(defun lein-project-clj-jack-in-profiles ()
+  (thread-last
+    (lein-project-clj-filepath)
+    (lein-project-clj-profiles)
+    (seq-filter (lambda (profile) (not (member profile '("dev" "repl" "uberjar")))))
+    (seq-map (lambda (profile) (list profile (concat "+" profile))))
+    (apply 'append)))
+
+(defun cider-jack-in-with-profile-completion ()
+    (interactive)
+    (let* ((profiles
+            (lein-project-clj-jack-in-profiles))
+
+           (profile
+            (completing-read "jack-in repl with profile: "
+                             profiles nil nil nil nil "")))
+
+      (cider-jack-in-with-profile profile)))
+
+(defun cider-jack-in-dwim ()
+  (interactive)
+  (let* ((profiles
+          (lein-project-clj-jack-in-profiles))
+
+         (profile
+          (completing-read "jack-in repl with profile: "
+                           profiles nil nil nil nil "")))
+
+    (if (string-empty-p profile)
+        (cider-jack-in)
+      (cider-jack-in-with-profile profile))))

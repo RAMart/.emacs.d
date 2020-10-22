@@ -1,6 +1,7 @@
 (provide 'my-diminish)
 (require-package 'diminish)
 
+(eval-after-load "flycheck"     '(diminish 'flycheck-mode))
 (eval-after-load "company"      '(diminish 'company-mode))
 (eval-after-load "counsel"      '(diminish 'counsel-mode))
 (eval-after-load "ivy"          '(diminish 'ivy-mode))

@@ -5,6 +5,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#3F3F3F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
  '(backup-inhibited t t)
  '(blink-cursor-blinks 0)
  '(cider-mode-line-show-connection nil)
@@ -22,36 +24,40 @@
  '(company-quickhelp-mode 1)
  '(compilation-ask-about-save nil)
  '(confirm-nonexistent-file-or-buffer nil)
- '(custom-safe-themes (quote (default)))
+ '(custom-safe-themes
+   '("f2c35f8562f6a1e5b3f4c543d5ff8f24100fae1da29aeb1864bbc17758f52b70" default))
  '(delete-by-moving-to-trash nil)
  '(echo-keystrokes 0.02)
- '(ediff-split-window-function (quote split-window-horizontally))
- '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(ediff-split-window-function 'split-window-horizontally)
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
+ '(fci-rule-color "#383838")
  '(inhibit-startup-echo-area-message t)
  '(inhibit-startup-screen t)
- '(initial-major-mode (quote lisp-interaction-mode))
+ '(initial-major-mode 'lisp-interaction-mode)
  '(ivy-height 13)
  '(ivy-use-virtual-buffers t)
- '(magit-completing-read-function (quote ivy-completing-read))
+ '(magit-completing-read-function 'ivy-completing-read)
  '(markdown-command "/usr/local/bin/multimarkdown")
  '(neo-smart-open t)
  '(next-error-highlight t)
  '(next-error-highlight-no-select t)
+ '(nrepl-message-colors
+   '("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3"))
  '(nsm-settings-file "~/.emacs.d/etc/network-security.data")
- '(org-cycle-include-plain-lists (quote integrate))
+ '(org-cycle-include-plain-lists 'integrate)
  '(org-ellipsis " ►")
  '(package-selected-packages
-   (quote
-    (buffer-move spaceline treemacs-all-the-icons zenburn zenburn-theme exwm markdown-mode move-text expand-region ace-window counsel swiper ivy smex clj-refactor undo-tree company-quickhelp multiple-cursors which-key company magit fullframe cider paredit rainbow-delimiters avy)))
- '(powerline-default-separator (quote contour))
+   '(git-gutter diminish flycheck flycheck-clj-kondo buffer-move spaceline treemacs-all-the-icons zenburn zenburn-theme exwm markdown-mode move-text expand-region ace-window counsel swiper ivy smex clj-refactor undo-tree company-quickhelp multiple-cursors which-key company magit fullframe cider paredit rainbow-delimiters avy))
+ '(pdf-view-midnight-colors '("#DCDCCC" . "#383838"))
+ '(powerline-default-separator 'slant)
+ '(powerline-height 24)
  '(query-replace-highlight t)
  '(recentf-max-saved-items 200)
  '(recentf-save-file "~/.emacs.d/etc/recent-files")
  '(require-final-newline t)
- '(ring-bell-function (quote ignore))
+ '(ring-bell-function 'ignore)
  '(safe-local-variable-values
-   (quote
-    ((cider-default-cljs-repl . "Figwheel")
+   '((cider-default-cljs-repl . "Figwheel")
      (org-todo-keyword-faces
       ("TODO" . "OrangeRed")
       ("STARTED" . "DarkOrange")
@@ -59,21 +65,42 @@
      (org-todo-keyword-faces
       ("TODO" . "red")
       ("STARTED" . "orange")
-      ("DONE" . "green")))))
+      ("DONE" . "green"))))
  '(save-place-file "~/.emacs.d/etc/places")
  '(save-place-forget-unreadable-files nil)
  '(select-enable-clipboard t)
  '(shift-select-mode nil)
  '(show-paren-delay 0)
  '(smex-save-file "~/.emacs.d/etc/smex-items")
- '(sml/mode-width (quote full))
- '(sml/theme (quote dark))
+ '(sml/mode-width 'full)
+ '(sml/theme 'dark)
  '(transient-mark-mode t)
  '(truncate-partial-width-windows nil)
  '(uniquify-after-kill-buffer-p t)
- '(uniquify-buffer-name-style (quote forward) nil (uniquify))
+ '(uniquify-buffer-name-style 'forward nil (uniquify))
  '(uniquify-ignore-buffers-re "^\\*")
  '(uniquify-separator "/")
+ '(vc-annotate-background "#2B2B2B")
+ '(vc-annotate-color-map
+   '((20 . "#BC8383")
+     (40 . "#CC9393")
+     (60 . "#DFAF8F")
+     (80 . "#D0BF8F")
+     (100 . "#E0CF9F")
+     (120 . "#F0DFAF")
+     (140 . "#5F7F5F")
+     (160 . "#7F9F7F")
+     (180 . "#8FB28F")
+     (200 . "#9FC59F")
+     (220 . "#AFD8AF")
+     (240 . "#BFEBBF")
+     (260 . "#93E0E3")
+     (280 . "#6CA0A3")
+     (300 . "#7CB8BB")
+     (320 . "#8CD0D3")
+     (340 . "#94BFF3")
+     (360 . "#DC8CC3")))
+ '(vc-annotate-very-old-color "#DC8CC3")
  '(which-key-idle-delay 0.1)
  '(which-key-show-transient-maps t)
  '(winner-mode 1))
@@ -91,7 +118,7 @@
                   ("marmalade" . "http://marmalade-repo.org/packages/")
                   ("gnu" . "http://elpa.gnu.org/packages/")))
   (add-to-list 'package-archives source t))
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3") ;; WORKAROUND bis Emacs 26.3+ erschienen ist
+;; (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3") ;; WORKAROUND. Already Fixed?
 
 (package-initialize)
 
@@ -101,9 +128,3 @@
 (add-to-list 'load-path (concat user-emacs-directory "config"))
 
 (require 'all-configs)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

@@ -2,26 +2,19 @@
 
 (require 'my-emacs)
 
-(require 'my-osx)
-(require 'my-diminish) ;; TODO: Nochmal reinschauen. Zusätzlich noch rich-minority-mode?
+(require 'my-osx) ;; TODO: <fn> kann als Hyper-Key konfiguriert werden?
+(require 'my-diminish) ;; TODO: Nochmal reinschauen.
 (require 'my-modeline)
 (require 'my-rainbow-delimiters)
 (require 'my-whitespace)
 (require 'my-which-key) ;; TODO: Darf für transient-maps nicht die Eingabezeile blockieren
-(require 'my-treemacs) ;; TODO: Einrückung kaputt?
+(require 'my-treemacs)
 (require 'my-undo-tree)
-(require 'my-multiple-cursors)
+(require 'my-multiple-cursors) ;; TODO: Check Bindings
 (require 'my-ivy)
 
-;; ;; TODO: flycheck mit clj-kondo
 
-;; ;; (defface error-face
-;; ;;   '((t (:foreground "#CC5353"))) "Red Highlight")
-
-;; ;; (defface success-face
-;; ;;   '((t (:foreground "yellow" :background "#555577"))) "Green Highlight")
-
-;; ;;  TODO: TRAMP - eine Art... SSH Client?
+;; ;; TODO: Wollen wir git-gutter? Wenn, dann magit und git-gutter in my-git konfigurieren.
 
 
 ;; ;; TODO: Search And Replace Facility
@@ -45,6 +38,7 @@
 (require 'my-company)
 (require 'my-move-text) ;; TODO: Kooperiert nicht gut mit paredit/paxedit. Fott? Andere, Mode-spezifische Keybindings?
 (require 'my-clojure) ;; TODO: STOPPED RIGHT HERE AND NOT DONE YET!
+(require 'my-flycheck) ;; TODO: Flycheck lernen/konfigurieren/für Modes aktivieren
 
 (require 'my-magit) ;; TODO: magit-log-buffer-file noch an ein Shortcut binden?
                     ;;       Festlegen, welche Kommandos die Fensteraufteilung sprengen
@@ -57,15 +51,14 @@
                      ;;       C-: ist im Clojure(script)-mode bereits an clojure-toggle-keyword-string gebunden
                      ;;       - multiple-cursors?
 
-;; TODO: Inspirationsquellen:
-;; https://github.com/hemmvm/dotemacs/blob/master/init.el
-;; https://github.com/hemmvm/dotemacs/blob/master/site-lisp/setup--sane-defaults.el
+(require 'my-theme)
 
 ;; - simple-bookmarks
 ;; - dired+ -> dired mit konfigurierbarer Wiederverwendung der Buffer
 ;; - Hide Show (built-in minor mode)
 ;;   https://www.emacswiki.org/emacs/HideShow
-;; highlight-symbol -> Automatische Hervorhebung, farbliche Hervorhebung
+;; highlight-symbol, highlight-symbol-at-point -> Automatische Hervorhebung, farbliche Hervorhebung
+;; unhighlight-regexp
 ;; smartrep -> In einen Kontext gehen und dort Befehle wiederholen, bis C-g
 ;; - flycheck -> Lint as you type, zusammen mit clj-kondo vielleicht?
 
@@ -81,6 +74,8 @@
 ;; projectile
 ;;   NOTE: Projectile requires this setting for ivy completion:
 ;;   (setq projectile-completion-system 'ivy)
+;;
+;; Tramp - eine Art... SSH Client?
 ;;
 ;; SQL Mode konfigurieren
 ;;   https://truongtx.me/2014/08/23/setup-emacs-as-an-sql-database-client

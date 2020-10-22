@@ -8,9 +8,3 @@
 
 (custom-set-variables
  '(magit-completing-read-function 'ivy-completing-read))
-
-(custom-theme-set-faces
- 'zenburn
- '(magit-diff-added ((t (:background "#3F5F3F"))))          ;; zenburn-green-4
- '(magit-diff-added-highlight ((t (:background "#4F6F4F")))) ;; zenburn-green-3
-)

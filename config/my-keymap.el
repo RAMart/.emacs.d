@@ -1,5 +1,5 @@
 (provide 'my-keymap)
-(require-packages '(buffer-move cl))
+(require-packages '(buffer-move))
 
 (defun ingos-keymap-cleanup ()
   ;;(setq which-key-show-transient-maps nil)

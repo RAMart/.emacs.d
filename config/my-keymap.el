@@ -2,8 +2,12 @@
 (require-packages '(buffer-move))
 
 (defun ingos-keymap-cleanup ()
-  ;;(setq which-key-show-transient-maps nil)
-  )
+  (setq which-key-show-transient-maps nil))
+
+;; TODO: Brauchen wir nicht mehr, gelle?
+(defun set-ingos-transient-map (map)
+  (setq which-key-show-transient-maps t)
+  (set-transient-map map nil 'ingos-keymap-cleanup))
 
 (defun ingos-buffer-keymap ()
   (interactive)
@@ -16,15 +20,13 @@
     (define-key map (kbd "+") 'enlarge-window-horizontally)
     (define-key map (kbd "_") 'shrink-window)
     (define-key map (kbd "*") 'enlarge-window)
-    ;;(setq which-key-show-transient-maps t)
-    (set-transient-map map t 'ingos-keymap-cleanup)))
+    (set-ingos-transient-map map)))
 
 (defun ingos-keymap ()
   (interactive)
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "b") 'ingos-buffer-keymap)
-    ;;(setq which-key-show-transient-maps t)
-    (set-transient-map map nil 'ingos-keymap-cleanup)))
+    (set-ingos-transient-map map)))
 
 (global-set-key (kbd "s-!") '(lambda ()  (interactive) (ansi-term "/bin/zsh")))
 (global-set-key (kbd "C-M-y") 'browse)

@@ -1,17 +1,17 @@
 (provide 'all-configs)
 
 (require 'my-emacs)
-
 (require 'my-osx) ;; TODO: <fn> kann als Hyper-Key konfiguriert werden?
-(require 'my-diminish) ;; TODO: Nochmal reinschauen.
+                  ;;       Und wollen wir das noch, nachdem wir ihn reichlich für Karabiner nutzen?
+(require 'my-diminish)
 (require 'my-modeline)
 (require 'my-rainbow-delimiters)
 (require 'my-whitespace)
-(require 'my-which-key) ;; TODO: Darf für transient-maps nicht die Eingabezeile blockieren
-(require 'my-treemacs)
+(require 'my-which-key)
+(require 'my-treemacs) ;; STOPPEDF RIGHT HERE – Weitere Keybindings
 (require 'my-undo-tree)
 (require 'my-multiple-cursors) ;; TODO: Check Bindings
-(require 'my-ivy)
+(require 'my-ivy) ;; TODO: Was ist nochmal ivy vs. smex vs counsel?
 
 
 ;; ;; TODO: Wollen wir git-gutter? Wenn, dann magit und git-gutter in my-git konfigurieren.
@@ -44,6 +44,9 @@
                     ;;       Festlegen, welche Kommandos die Fensteraufteilung sprengen
 
 (require 'my-keymap) ;; TODO: Nochmal die einzelnen Modes durchgehen und ggf. was umheben.
+                     ;;       - CMD-k ist auf "Kill current buffer" gebunden. Wollen wir das behalten?
+                     ;;       - Highlight Keybindings fände ich noch nett
+                     ;;       - den mark-ring durchgehen / nutzen
                      ;;       Kürzel für
                      ;;       - cider-repl-clear-buffer
                      ;;       - delete-char (falls die Klammern mal falsch sind)

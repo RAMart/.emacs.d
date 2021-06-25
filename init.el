@@ -38,7 +38,6 @@
  '(ivy-use-virtual-buffers t)
  '(magit-completing-read-function 'ivy-completing-read)
  '(markdown-command "/usr/local/bin/multimarkdown")
- '(neo-smart-open t)
  '(next-error-highlight t)
  '(next-error-highlight-no-select t)
  '(nrepl-message-colors

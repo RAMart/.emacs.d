@@ -3,4 +3,3 @@
 - markdown-mode: Whitespaces sichtbar machen und *nicht* bereinigen.
 - eigene Funktion zum Start einer Präsentation:
   (load-theme 'whiteboard)
-  ; ein paar Farben vom Org-Mode und ggf. von Rainbow-delimiters anpassen.
